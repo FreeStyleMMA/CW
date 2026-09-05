@@ -1,0 +1,352 @@
+.espresso-page {
+  min-height: calc(100vh - 70px);
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 80px 40px 100px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.espresso-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  margin-bottom: 55px;
+}
+
+.espresso-eyebrow {
+  margin: 0 0 14px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  color: #999;
+}
+
+.espresso-header h1 {
+  margin: 0;
+
+  font-size: 48px;
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+
+  color: #222;
+}
+
+.espresso-description {
+  margin: 16px 0 0;
+
+  font-size: 14px;
+
+  color: #888;
+}
+
+
+/* =========================
+   Write Button
+========================= */
+
+.espresso-write-button {
+  padding: 13px 20px;
+
+  border-radius: 999px;
+
+  background: #222;
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: background 0.2s ease;
+}
+
+.espresso-write-button:hover {
+  background: #444;
+}
+
+
+/* =========================
+   Toolbar
+========================= */
+
+.espresso-toolbar {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid #ddd;
+
+  color: #888;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   Record List
+========================= */
+
+.espresso-list {
+  border-bottom: 1px solid #ddd;
+}
+
+
+/* =========================
+   Record
+========================= */
+
+.espresso-record {
+  display: grid;
+
+  grid-template-columns:
+    1.3fr
+    2.7fr
+    30px;
+
+  align-items: center;
+
+  gap: 30px;
+
+  padding: 30px 5px;
+
+  border-bottom: 1px solid #e7e5e1;
+
+  color: #222;
+
+  text-decoration: none;
+
+  transition:
+    padding 0.2s ease,
+    background 0.2s ease;
+}
+
+.espresso-record:last-child {
+  border-bottom: none;
+}
+
+.espresso-record:hover {
+  padding-left: 12px;
+  padding-right: 12px;
+
+  background: #faf9f6;
+}
+
+
+/* =========================
+   Bean
+========================= */
+
+.record-label {
+  display: block;
+
+  margin: 0 0 8px;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+
+  color: #aaa;
+}
+
+.record-bean h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* =========================
+   Recipe Data
+========================= */
+
+.record-data {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+}
+
+.record-item {
+  min-width: 60px;
+}
+
+.record-item strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.record-item small {
+  font-size: 11px;
+  font-weight: 400;
+
+  color: #888;
+}
+
+.record-arrow {
+  color: #aaa;
+
+  font-size: 16px;
+}
+
+.record-item.ratio {
+  margin-left: auto;
+}
+
+
+/* =========================
+   Detail Arrow
+========================= */
+
+.record-link {
+  font-size: 20px;
+
+  color: #999;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.espresso-record:hover .record-link {
+  transform: translateX(5px);
+
+  color: #222;
+}
+
+
+/* =========================
+   Empty
+========================= */
+
+.espresso-empty {
+  padding: 100px 20px;
+
+  text-align: center;
+
+  color: #999;
+
+  font-size: 14px;
+}
+
+.espresso-empty p {
+  margin: 0 0 20px;
+}
+
+.espresso-empty a {
+  color: #222;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+
+/* =========================
+   Loading / Error
+========================= */
+
+.espresso-message {
+  padding: 120px 20px;
+
+  text-align: center;
+
+  color: #888;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 900px) {
+
+  .espresso-page {
+    padding: 60px 25px 80px;
+  }
+
+  .espresso-header {
+    align-items: start;
+
+    flex-direction: column;
+
+    gap: 30px;
+  }
+
+  .espresso-header h1 {
+    font-size: 40px;
+  }
+
+  .espresso-record {
+    grid-template-columns: 1fr 30px;
+
+    gap: 20px;
+  }
+
+  .record-data {
+    grid-column: 1 / -1;
+
+    gap: 20px;
+  }
+
+  .record-link {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .espresso-page {
+    padding: 45px 20px 60px;
+  }
+
+  .espresso-header h1 {
+    font-size: 36px;
+  }
+
+  .espresso-description {
+    font-size: 13px;
+  }
+
+  .espresso-record {
+    padding: 25px 0;
+  }
+
+  .record-data {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+  }
+
+  .record-arrow {
+    display: none;
+  }
+
+  .record-item.ratio {
+    margin-left: 0;
+  }
+}

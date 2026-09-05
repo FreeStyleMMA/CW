@@ -1,0 +1,520 @@
+.espresso-detail-page {
+  min-height: calc(100vh - 70px);
+
+  padding: 65px 40px 120px;
+
+  background: #f8f7f4;
+}
+
+.espresso-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* =========================
+   Navigation
+========================= */
+
+.detail-navigation {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-link {
+  color: #888;
+
+  font-size: 12px;
+
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: #222;
+}
+
+.detail-actions {
+  display: flex;
+
+  gap: 8px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 9px 15px;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  background: #fff;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  border-color: #222;
+}
+
+.delete-button {
+  color: #999;
+}
+
+.delete-button:hover {
+  color: #c44;
+  border-color: #c44;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.detail-header {
+  margin: 55px 0 45px;
+}
+
+.detail-header p {
+  margin: 0 0 14px;
+
+  color: #999;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+}
+
+.detail-header h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 48px;
+
+  letter-spacing: -0.05em;
+}
+
+.detail-title-input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 12px 0;
+
+  border: none;
+  border-bottom: 1px solid #ccc;
+
+  background: transparent;
+
+  font-size: 48px;
+
+  letter-spacing: -0.05em;
+
+  outline: none;
+}
+
+
+/* =========================
+   Recipe
+========================= */
+
+.detail-recipe {
+  display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+
+  padding: 30px 0;
+
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail-recipe div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.detail-recipe span {
+  color: #aaa;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+}
+
+.detail-recipe strong {
+  color: #222;
+
+  font-size: 17px;
+}
+
+
+/* =========================
+   Sections
+========================= */
+
+.detail-section {
+  margin-top: 55px;
+
+  padding: 35px;
+
+  background: #fff;
+
+  border: 1px solid #e5e3df;
+}
+
+.detail-title {
+  display: flex;
+
+  gap: 14px;
+
+  margin-bottom: 30px;
+}
+
+.detail-title > span {
+  color: #aaa;
+
+  font-size: 10px;
+}
+
+.detail-title h2 {
+  margin: 0;
+
+  font-size: 20px;
+}
+
+.detail-title p {
+  margin: 7px 0 0;
+
+  color: #999;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   Media
+========================= */
+
+.media-area {
+  width: 100%;
+}
+
+.media-empty {
+  min-height: 250px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed #d5d2cd;
+
+  color: #999;
+}
+
+.media-empty span {
+  margin-bottom: 10px;
+
+  font-size: 30px;
+}
+
+.media-empty strong {
+  font-size: 13px;
+
+  color: #555;
+}
+
+.media-empty p {
+  margin: 7px 0 0;
+
+  font-size: 11px;
+
+  color: #aaa;
+}
+
+
+/* =========================
+   Tasting
+========================= */
+
+.detail-rating {
+  display: flex;
+
+  gap: 3px;
+}
+
+.detail-rating span {
+  color: #ddd;
+
+  font-size: 27px;
+}
+
+.detail-rating span.active {
+  color: #222;
+}
+
+.detail-note {
+  margin: 20px 0 0;
+
+  color: #666;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   Edit Form
+========================= */
+
+.detail-edit-form {
+  padding: 35px;
+
+  background: #fff;
+
+  border: 1px solid #e5e3df;
+}
+
+.edit-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 25px 20px;
+}
+
+.edit-field {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.edit-field label,
+.edit-rating label,
+.edit-note label {
+  color: #555;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.edit-field input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.edit-field input:focus {
+  border-color: #222;
+}
+
+.edit-field > span {
+  position: absolute;
+
+  right: 13px;
+  bottom: 14px;
+
+  color: #999;
+
+  font-size: 11px;
+}
+
+.ratio-field strong {
+  padding: 12px 0;
+
+  font-size: 20px;
+}
+
+
+/* Rating */
+
+.edit-rating {
+  margin-top: 35px;
+}
+
+.stars {
+  display: flex;
+
+  gap: 3px;
+
+  margin-top: 10px;
+}
+
+.stars button {
+  padding: 0;
+
+  border: none;
+
+  background: none;
+
+  color: #ddd;
+
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+.stars button.active {
+  color: #222;
+}
+
+
+/* Note */
+
+.edit-note {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  margin-top: 30px;
+}
+
+.edit-note textarea {
+  width: 100%;
+
+  min-height: 140px;
+
+  box-sizing: border-box;
+
+  padding: 14px;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  resize: vertical;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.edit-note textarea:focus {
+  border-color: #222;
+}
+
+
+/* Buttons */
+
+.edit-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  margin-top: 30px;
+
+  padding-top: 25px;
+
+  border-top: 1px solid #eee;
+}
+
+.cancel-button,
+.save-button {
+  padding: 12px 20px;
+
+  border-radius: 4px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.cancel-button {
+  border: 1px solid #ddd;
+
+  background: #fff;
+
+  color: #555;
+}
+
+.save-button {
+  border: none;
+
+  background: #222;
+
+  color: #fff;
+}
+
+.save-button:hover {
+  background: #444;
+}
+
+
+/* =========================
+   Message
+========================= */
+
+.espresso-detail-message {
+  padding: 120px;
+
+  text-align: center;
+
+  color: #888;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 700px) {
+
+  .espresso-detail-page {
+    padding: 45px 20px 80px;
+  }
+
+  .detail-header {
+    margin-top: 40px;
+  }
+
+  .detail-header h1,
+  .detail-title-input {
+    font-size: 36px;
+  }
+
+  .detail-recipe {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+  }
+
+  .detail-section,
+  .detail-edit-form {
+    padding: 25px;
+  }
+
+  .edit-grid {
+    grid-template-columns: 1fr;
+  }
+}
