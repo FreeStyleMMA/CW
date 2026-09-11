@@ -2,11 +2,21 @@ package com.coffeewriter.recipe;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.coffeewriter.bean.Bean;
+import com.coffeewriter.member.Member;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,20 +30,28 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "recipe")
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
-	private String memberId;
+	//등록 사용자 memberId
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id", nullable = false)
+	private Member member;
 	
+	@CreatedDate
 	@Column(nullable = false)
 	private LocalDateTime createdAt;
 	
-	@Column(nullable = false)
-	private String bean;//원두 종류
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "bean_id")
+	private Bean bean;
+
+//	@Column(nullable = false)
+//	private String bean;//원두 종류
 	
 	@Column(nullable = false)
 	private float dose;

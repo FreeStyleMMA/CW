@@ -1,30 +1,28 @@
+
 import "./LoginPage.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const { login } = useAuth();
+
+  const [memberId, setMemberId] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
-        {
-          email: email,
-          password: password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      await login(memberId, password);
 
-      console.log("요청 데이터:", response.data);
+      console.log("로그인 성공");
+
+      navigate("/");
     } catch (error) {
-      console.log("로그인 에러 발생");
+      console.log("로그인 에러 발생", error);
     }
   };
 
@@ -45,15 +43,15 @@ export default function LoginPage() {
         <form onSubmit={handleLogin} className="login-form">
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="memberId">memberId</label>
 
             <input
-              id="email"
+              id="memberId"
               className="input-box"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="이메일을 입력하세요"
+              type="text"
+              value={memberId}
+              onChange={(e) => setMemberId(e.target.value)}
+              placeholder="아이디를 입력하세요"
             />
           </div>
 
@@ -86,3 +84,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

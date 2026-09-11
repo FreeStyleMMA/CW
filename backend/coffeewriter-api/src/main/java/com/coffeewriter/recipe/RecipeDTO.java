@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.coffeewriter.bean.Bean;
+import com.coffeewriter.member.Member;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,9 +25,18 @@ public class RecipeDTO {
 	@CreatedDate
     private LocalDateTime createdAt;	
 	
-	private String memberId;//작성자id
+    // ===========================
+    
 	
-	private String bean;//원두 종류
+    // ===========================
+    // Bean
+	
+	private Long beanId;//원두 id
+	
+	private String beanName;// 원두 이름
+	
+	
+	//=====에스프레소 추출 정보 =====
 	
 	private float dose; // 도징량
 	
@@ -37,5 +49,9 @@ public class RecipeDTO {
 	private float temperature;//추출온도
 	
 	private float ebr;//추출비율(Espresso Brew Ratio)
+	
+	// Member
+	
+		private String memberId;//작성자id
 		
 }

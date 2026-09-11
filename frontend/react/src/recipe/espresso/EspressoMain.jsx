@@ -1,81 +1,99 @@
+import MainLayout from "../../layouts/MainLayout";
 import "./EspressoMain.css";
+
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
-// Espresso 기록 조회
-const getEspressoRecords = async () => {
-  const response = await axios.get(
-    "http://localhost:8080/api/recipe/getRecipes",
-    {
-      params: {
-        memberId: "admin", // *** 추후 id 동적으로 가져오게 수정 ***
-      },
-      withCredentials: true,
-    }
-  );
+import { getRecipes } from "../../api/RecipeApi";
 
-  return response.data;
-};
+import { useAuth } from "../../context/AuthContext";
+
 
 export default function EspressoMain() {
+
+  const { user } = useAuth();
+
   const {
     data: recipes = [],
     isLoading,
     isError,
   } = useQuery({
+
     queryKey: ["espressoRecords"],
-    queryFn: getEspressoRecords,
+
+    queryFn: () =>
+      getRecipes(user.memberId),
+
   });
 
+
   if (isLoading) {
+
     return (
       <div className="espresso-page">
+
         <div className="espresso-message">
           데이터 불러오는중...
         </div>
+
       </div>
     );
+
   }
 
+
   if (isError) {
+
     return (
       <div className="espresso-page">
+
         <div className="espresso-message">
           데이터를 불러오지 못했습니다.
         </div>
+
       </div>
     );
+
   }
 
+
   return (
+<MainLayout>
     <div className="espresso-page">
+
 
       {/* Header */}
 
       <section className="espresso-header">
 
         <div>
+
           <p className="espresso-eyebrow">
             ESPRESSO JOURNAL
           </p>
 
-          <h1>My Espresso</h1>
+          <h1>
+            My Espresso
+          </h1>
 
           <p className="espresso-description">
             내가 추출한 에스프레소를 기록하고 관리하세요.
           </p>
+
         </div>
+
 
         <Link
           to="/recipe/espresso/write"
           className="espresso-write-button"
-        >
-          + Record Espresso
+          >
+          + 추출 일지 작성
         </Link>
 
       </section>
-
+<Link to="/recipe/espresso/compare?beanId=${bean.id}`"
+ className="espresso-write-button">
+ 레시피 연구소</Link>
 
       {/* Record Count */}
 
@@ -93,46 +111,59 @@ export default function EspressoMain() {
       <section className="espresso-list">
 
         {recipes.length === 0 ? (
-
+          
           <div className="espresso-empty">
 
-            <p>아직 기록된 Espresso가 없습니다.</p>
+            <p>
+              아직 기록된 Espresso가 없습니다.
+            </p>
 
-            <Link to="/recipe/espresso/write">
+            <Link
+              to="/recipe/espresso/write"
+              >
               첫 번째 Espresso 기록하기
             </Link>
 
           </div>
 
-        ) : (
+) : (
+  
+  recipes.map((recipe) => {
+    
+    const dose =
+    Number(recipe.dose);
+    
+    const output =
+    Number(recipe.espressoOutput);
+    
+    
+    const ratio =
+    dose && output
+    ? (
+      output / dose
+    ).toFixed(2)
+    : "-";
+    
+    
+    return (
+      
+      <Link
+      to={`/recipe/espresso/${recipe.id}`}
+      key={recipe.id}
+      className="espresso-record"
+      >
 
-          recipes.map((recipe) => {
-
-            const dose = Number(recipe.dose);
-            const output = Number(recipe.espressoOutput);
-
-            const ratio =
-              dose && output
-                ? (output / dose).toFixed(2)
-                : "-";
-
-            return (
-              <Link
-                to={`/recipe/espresso/${recipe.id}`}
-                key={recipe.id}
-                className="espresso-record"
-              >
 
                 {/* Bean */}
 
                 <div className="record-bean">
 
                   <p className="record-label">
-                    BEAN
+                    원두 종류
                   </p>
 
                   <h2>
-                    {recipe.bean}
+                    {recipe.beanName}
                   </h2>
 
                 </div>
@@ -142,15 +173,21 @@ export default function EspressoMain() {
 
                 <div className="record-data">
 
+
                   <div className="record-item">
 
                     <span className="record-label">
-                      DOSE
+                      도징량
                     </span>
 
                     <strong>
+
                       {recipe.dose}
-                      <small> g</small>
+
+                      <small>
+                        {" "}g
+                      </small>
+
                     </strong>
 
                   </div>
@@ -164,12 +201,17 @@ export default function EspressoMain() {
                   <div className="record-item">
 
                     <span className="record-label">
-                      OUTPUT
+                      추출량
                     </span>
 
                     <strong>
+
                       {recipe.espressoOutput}
-                      <small> g</small>
+
+                      <small>
+                        {" "}g
+                      </small>
+
                     </strong>
 
                   </div>
@@ -178,12 +220,17 @@ export default function EspressoMain() {
                   <div className="record-item">
 
                     <span className="record-label">
-                      TIME
+                      추출 시간
                     </span>
 
                     <strong>
+
                       {recipe.extractSecond}
-                      <small> sec</small>
+
+                      <small>
+                        {" "}sec
+                      </small>
+
                     </strong>
 
                   </div>
@@ -192,12 +239,17 @@ export default function EspressoMain() {
                   <div className="record-item">
 
                     <span className="record-label">
-                      TEMP
+                      추출 온도
                     </span>
 
                     <strong>
+
                       {recipe.temperature}
-                      <small> °C</small>
+
+                      <small>
+                        {" "}°C
+                      </small>
+
                     </strong>
 
                   </div>
@@ -206,7 +258,7 @@ export default function EspressoMain() {
                   <div className="record-item ratio">
 
                     <span className="record-label">
-                      RATIO
+                      추출 비율
                     </span>
 
                     <strong>
@@ -214,6 +266,7 @@ export default function EspressoMain() {
                     </strong>
 
                   </div>
+
 
                 </div>
 
@@ -224,14 +277,20 @@ export default function EspressoMain() {
                   →
                 </div>
 
-              </Link>
-            );
-          })
 
+              </Link>
+
+            );
+            
+          })
+          
         )}
 
       </section>
 
     </div>
+        </MainLayout>
+
   );
+
 }

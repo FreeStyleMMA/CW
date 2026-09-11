@@ -1,0 +1,265 @@
+/* =========================
+   Bean 공통
+========================= */
+
+.bean-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.bean-page h1 {
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.bean-page h2 {
+  margin-bottom: 20px;
+}
+
+.bean-page h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.bean-page p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+
+/* =========================
+   버튼
+========================= */
+
+.bean-button {
+  border: none;
+  border-radius: 6px;
+  padding: 9px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #333;
+  color: white;
+}
+
+.bean-button:hover {
+  opacity: 0.85;
+}
+
+.bean-button + .bean-button {
+  margin-left: 8px;
+}
+
+.bean-button-secondary {
+  background: #eee;
+  color: #333;
+}
+
+.bean-button-danger {
+  background: #c0392b;
+}
+
+
+/* =========================
+   Bean 목록
+========================= */
+
+.bean-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.bean-search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.bean-search input {
+  width: 300px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.bean-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: white;
+}
+
+.bean-card:hover {
+  border-color: #aaa;
+}
+
+.bean-card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.bean-card p {
+  color: #555;
+}
+
+
+/* =========================
+   Bean 상세
+========================= */
+
+.bean-detail-section {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 25px;
+  background: white;
+}
+
+.bean-detail-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.bean-detail-row:last-child {
+  border-bottom: none;
+}
+
+.bean-detail-label {
+  width: 130px;
+  font-weight: bold;
+}
+
+.bean-detail-value {
+  color: #555;
+}
+
+
+/* =========================
+   Coffee Origin
+========================= */
+
+.bean-origin {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 30px;
+  background: #fafafa;
+}
+
+.bean-origin h2 {
+  margin-top: 0;
+}
+
+.bean-origin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 30px;
+}
+
+.bean-origin-description {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+
+/* =========================
+   Bean 수정 / 등록
+========================= */
+
+.bean-form {
+  max-width: 700px;
+}
+
+.bean-form-group {
+  margin-bottom: 20px;
+}
+
+.bean-form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.bean-form-group input,
+.bean-form-group select,
+.bean-form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.bean-form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.bean-origin-form {
+  margin-top: 25px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.bean-origin-form h2 {
+  margin-top: 0;
+}
+
+.bean-origin-checkbox {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal !important;
+}
+
+.bean-origin-checkbox input {
+  width: auto;
+}
+
+
+/* =========================
+   반응형
+========================= */
+
+@media (max-width: 700px) {
+
+  .bean-page {
+    padding: 25px 15px;
+  }
+
+  .bean-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .bean-search {
+    width: 100%;
+  }
+
+  .bean-search input {
+    width: 100%;
+  }
+
+  .bean-origin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bean-detail-row {
+    display: block;
+  }
+
+  .bean-detail-label {
+    width: auto;
+    margin-bottom: 4px;
+  }
+}

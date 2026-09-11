@@ -13,9 +13,9 @@ import {
 } from "@tanstack/react-query";
 
 import {
-  getEspresso,
-  deleteEspresso,
-} from "../../api/EspressoApi";
+  getRecipe,
+  deleteRecipe,
+} from "../../api/RecipeApi";
 
 
 export default function EspressoDetail() {

@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const API_BASE_URL = "http://localhost:8080/api/recipe";
 
 const axiosConfig = {
@@ -7,8 +6,8 @@ const axiosConfig = {
 };
 
 
-// Espresso 목록 조회
-export const getEspressos = async (memberId) => {
+// Recipe 목록 조회
+export const getRecipes = async (memberId) => {
 
   const response = await axios.get(
     `${API_BASE_URL}/getRecipes`,
@@ -24,8 +23,8 @@ export const getEspressos = async (memberId) => {
 };
 
 
-// Espresso detail 조회
-export const getEspresso = async (id) => {
+// Recipe 상세 조회
+export const getRecipe = async (id) => {
 
   const response = await axios.get(
     `${API_BASE_URL}/${id}`,
@@ -34,14 +33,10 @@ export const getEspresso = async (id) => {
 
   return response.data;
 };
- 
 
 
-
-
-
-// Espresso 생성
-export const createEspresso = async (data) => {
+// Recipe 등록
+export const createRecipe = async (data) => {
 
   const response = await axios.post(
     `${API_BASE_URL}/write`,
@@ -53,8 +48,8 @@ export const createEspresso = async (data) => {
 };
 
 
-// Espresso 수정
-export const updateEspresso = async (id, data) => {
+// Recipe 수정
+export const updateRecipe = async (id, data) => {
 
   const response = await axios.put(
     `${API_BASE_URL}/${id}`,
@@ -66,8 +61,8 @@ export const updateEspresso = async (id, data) => {
 };
 
 
-// Espresso 삭제
-export const deleteEspresso = async (id) => {
+// Recipe 삭제
+export const deleteRecipe = async (id) => {
 
   const response = await axios.delete(
     `${API_BASE_URL}/${id}`,

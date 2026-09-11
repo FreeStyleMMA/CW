@@ -29,8 +29,8 @@ public class RecipeController {
 	//레시피 작성 로직.
 	@PostMapping("/write")  
 	public ResponseEntity<Void> recipeWrite(@RequestBody RecipeDTO request){
+		System.out.println("=============레시피 요청 파라미터 확인 : " + "memberId:"+request.getMemberId());
 		service.writeRecipe(request);
-		System.out.println("레시피 작성 요청 파라미터 확인----"+"EBR"+request.getEbr()+", 추출온도"+request.getTemperature());
 		return ResponseEntity.ok().build();
 	}
 	
@@ -58,7 +58,8 @@ public class RecipeController {
 	//레시피 수정
 	@PutMapping("/{id}")
 	public ResponseEntity<RecipeDTO> updateRecipe(
-			@PathVariable("id") Long id, @RequestBody RecipeDTO recipeDTO
+			@PathVariable("id") Long id, 
+			@RequestBody RecipeDTO recipeDTO
 			){
 		System.out.println("==========recipedto:" +recipeDTO);
 		RecipeDTO updateRecipe = service.updateRecipe(id,recipeDTO);
@@ -76,6 +77,15 @@ public class RecipeController {
 		return ResponseEntity.ok().build();
 		
 	}
+	
+	   @GetMapping("/bean/{beanId}")
+	    public ResponseEntity<List<Recipe>> getRecipesByBeanId(
+	            @PathVariable Long beanId
+	    ) {
+	        return ResponseEntity.ok(
+	                service.getRecipesByBeanId(beanId)
+	        );
+	    }
 }
 
 

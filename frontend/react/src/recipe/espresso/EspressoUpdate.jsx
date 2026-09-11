@@ -16,9 +16,9 @@ import {
 import EspressoForm from "../../components/espresso/EspressoForm";
 
 import {
-  getEspresso,  
-  updateEspresso,
-} from "../../api/EspressoApi";
+  getRecipe,  
+  updateRecipe,
+} from "../../api/RecipeApi";
 
 
 export default function EspressoUpdate() {
