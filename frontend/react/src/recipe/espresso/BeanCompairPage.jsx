@@ -14,6 +14,8 @@ export default function BeanComparePage() {
   const [records, setRecords] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
   const [loading, setLoading] = useState(true);
+  
+  console.log("요청 beanId",beanId);
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -24,9 +26,8 @@ export default function BeanComparePage() {
 
       try {
         const response = await api.get(
-          `/api/recipes/espresso/bean/${beanId}`
+          `/api/recipe/bean/${beanId}`
         );
-
         const data = Array.isArray(response.data)
           ? response.data
           : [];
@@ -87,10 +88,10 @@ export default function BeanComparePage() {
       <div className="compare-page">
         <section className="compare-header">
           <p className="compare-eyebrow">
-            COFFEE COMPARISON
+            레시피 연구소
           </p>
 
-          <h1>같은 원두의 추출 기록 비교</h1>
+          <h1>추출 기록 비교</h1>
 
           <p>
             동일한 원두로 추출한 기록을 선택해
@@ -125,13 +126,13 @@ export default function BeanComparePage() {
 
                   <div>
                     <strong>
-                      {record.recordDate || "날짜 미등록"}
+                      {record.createdAt || "날짜 미등록"}
                     </strong>
 
                     <span>
                       {record.dose ?? "-"}g →{" "}
-                      {record.yield ?? "-"}g ·{" "}
-                      {record.extractionTime ?? "-"}초
+                      {record.espressoOutput ?? "-"}g ·{" "}
+                      {record.extractSecond ?? "-"}초
                     </span>
                   </div>
 
@@ -161,7 +162,7 @@ export default function BeanComparePage() {
 
                     {selectedRecords.map((record) => (
                       <th key={record.id}>
-                        {record.recordDate || `기록 ${record.id}`}
+                        {record.createdAt || `기록 ${record.id}`}
                       </th>
                     ))}
                   </tr>
@@ -183,7 +184,7 @@ export default function BeanComparePage() {
 
                     {selectedRecords.map((record) => (
                       <td key={record.id}>
-                        {record.yield ?? "-"}g
+                        {record.espressoOutput ?? "-"}g
                       </td>
                     ))}
                   </tr>
@@ -193,7 +194,7 @@ export default function BeanComparePage() {
 
                     {selectedRecords.map((record) => (
                       <td key={record.id}>
-                        {record.extractionTime ?? "-"}초
+                        {record.extractSecond ?? "-"}초
                       </td>
                     ))}
                   </tr>
@@ -203,9 +204,9 @@ export default function BeanComparePage() {
 
                     {selectedRecords.map((record) => {
                       const ratio =
-                        record.dose && record.yield
+                        record.dose && record.espressoOutput
                           ? (
-                              record.yield / record.dose
+                              record.espressoOutput / record.dose
                             ).toFixed(2)
                           : "-";
 
@@ -217,23 +218,23 @@ export default function BeanComparePage() {
                     })}
                   </tr>
 
-                  <tr>
-                    <th>평점</th>
+                 <tr>
+  <th>평점</th>
 
-                    {selectedRecords.map((record) => (
-                      <td key={record.id}>
-                        ★ {record.rating ?? 0}
-                      </td>
-                    ))}
-                  </tr>
+  {selectedRecords.map((record) => (
+    <td key={record.id}>
+      {"★".repeat(record.rating ?? 0)}
+    </td>
+  ))}
+</tr>
 
                   <tr>
                     <th>수온</th>
 
                     {selectedRecords.map((record) => (
                       <td key={record.id}>
-                        {record.waterTemperature
-                          ? `${record.waterTemperature}℃`
+                        {record.temperature
+                          ? `${record.temperature}℃`
                           : "-"}
                       </td>
                     ))}
@@ -244,7 +245,7 @@ export default function BeanComparePage() {
 
                     {selectedRecords.map((record) => (
                       <td key={record.id}>
-                        {record.grindSize ?? "-"}
+                        {record.grindingSize ?? "-"}
                       </td>
                     ))}
                   </tr>
@@ -254,7 +255,7 @@ export default function BeanComparePage() {
 
                     {selectedRecords.map((record) => (
                       <td key={record.id}>
-                        {record.memo || "-"}
+                        {record.note || "-"}
                       </td>
                     ))}
                   </tr>

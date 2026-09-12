@@ -91,9 +91,7 @@ export default function EspressoMain() {
         </Link>
 
       </section>
-<Link to="/recipe/espresso/compare?beanId=${bean.id}`"
- className="espresso-write-button">
- 레시피 연구소</Link>
+
 
       {/* Record Count */}
 

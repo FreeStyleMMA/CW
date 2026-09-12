@@ -71,4 +71,11 @@ public class Recipe {
 	@Column(nullable = false)
 	private float ebr;//추출비율(Espresso Brew Ratio)
 	
+	@Column(nullable = true)
+	private int rating;
+	
+	@Column(columnDefinition = "TEXT")
+	private String note;
+
+	
 }

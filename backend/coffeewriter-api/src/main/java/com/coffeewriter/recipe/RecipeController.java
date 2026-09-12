@@ -79,9 +79,15 @@ public class RecipeController {
 	}
 	
 	   @GetMapping("/bean/{beanId}")
-	    public ResponseEntity<List<Recipe>> getRecipesByBeanId(
-	            @PathVariable Long beanId
+	    public ResponseEntity<List<RecipeDTO>> getRecipesByBeanId(
+	            @PathVariable("beanId") Long beanId
 	    ) {
+			System.out.println("==========비교 요청 beanId :"+ beanId);
+
+		   List<RecipeDTO> recipeList = service.getRecipesByBeanId(beanId);
+		   
+		   System.out.println(
+				   "===================bean 비교 List:"+recipeList);
 	        return ResponseEntity.ok(
 	                service.getRecipesByBeanId(beanId)
 	        );

@@ -107,13 +107,13 @@ export default function HomePage() {
                     </p>
 
                     <p className="espresso-roastery">
-                      {record.roasteryName || "로스터리 미등록"}
+                      {record.roastery || "로스터리 미등록"}
                     </p>
 
                     <p className="espresso-meta">
                       {record.dose ?? "-"}g →{" "}
-                      {record.yield ?? "-"}g ·{" "}
-                      {record.extractionTime ?? "-"}s
+                      {record.espressoOutput ?? "-"}ml ·{" "}
+                      {record.extractSecond ?? "-"}s
                     </p>
 
                     <p className="espresso-date">

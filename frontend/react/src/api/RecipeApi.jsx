@@ -30,7 +30,7 @@ export const getRecipe = async (id) => {
     `${API_BASE_URL}/${id}`,
     axiosConfig
   );
-
+  console.log("eso Detil 조회: " ,response.data);
   return response.data;
 };
 

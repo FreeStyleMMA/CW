@@ -4,9 +4,6 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
 
-import com.coffeewriter.bean.Bean;
-import com.coffeewriter.member.Member;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,8 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RecipeDTO {
-	
+public class RecipeResponseDTO {
 	private Long id;
 
 	@CreatedDate
@@ -52,7 +48,6 @@ public class RecipeDTO {
 	
 	private int rating;
 	
-	private String note;
 	// Member
 	
 		private String memberId;//작성자id

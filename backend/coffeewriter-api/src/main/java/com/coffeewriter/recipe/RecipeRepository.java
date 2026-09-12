@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
     List<Recipe> findByMember_MemberId(String memberId);
-    List<Recipe> findByBeanIdOrderByRecordDateDesc(Long beanId);
+    List<Recipe> findByBeanIdOrderByCreatedAtDesc(Long beanId);
+    List<Recipe> findTop4ByOrderByCreatedAtDesc();
 }

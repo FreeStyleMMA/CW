@@ -80,7 +80,8 @@ public class RecipeService {
                 .extractSecond(request.getExtractSecond())
                 .temperature(request.getTemperature())
                 .ebr(request.getEbr())
-
+                .rating(request.getRating())
+                .note(request.getNote())
                 .build();
 
         recipeRepository.save(recipe);
@@ -162,27 +163,19 @@ public class RecipeService {
 
         recipe.setDose(dto.getDose());
 
-        recipe.setGrindingSize(
-                dto.getGrindingSize()
-        );
+        recipe.setGrindingSize( dto.getGrindingSize() );
 
-        recipe.setEspressoOutput(
-                dto.getEspressoOutput()
-        );
+        recipe.setEspressoOutput( dto.getEspressoOutput());
 
-        recipe.setExtractSecond(
-                dto.getExtractSecond()
-        );
+        recipe.setExtractSecond( dto.getExtractSecond());
 
-        recipe.setTemperature(
-                dto.getTemperature()
-        );
+        recipe.setTemperature(dto.getTemperature());
 
-        recipe.setEbr(
-                dto.getEbr()
-        );
+        recipe.setEbr(dto.getEbr());
 
-
+        recipe.setRating( dto.getRating());
+        recipe.setNote( dto.getNote());
+        
         return convertToDTO(recipe);
     }
 
@@ -210,13 +203,8 @@ public class RecipeService {
             Recipe recipe) {
 
         return RecipeDTO.builder()
-
                 .id(recipe.getId())
-
-                .createdAt(
-                        recipe.getCreatedAt()
-                )
-
+                .createdAt( recipe.getCreatedAt())
 
                 // ===========================
                 // Member Entity → memberId
@@ -228,7 +216,6 @@ public class RecipeService {
                                 : null
                 )
 
-
                 // ===========================
                 // Bean Entity → beanId
 
@@ -238,45 +225,40 @@ public class RecipeService {
                                 : null
                 )
 
-
                 // Bean Entity → beanName
 
                 .beanName(
-                        recipe.getBean() != null
+                		recipe.getBean() != null
                                 ? recipe.getBean().getName()
                                 : null
                 )
 
-
                 // ===========================
                 // 추출 정보
-
                 .dose(recipe.getDose())
 
-                .grindingSize(
-                        recipe.getGrindingSize()
-                )
+                .grindingSize(recipe.getGrindingSize())
 
-                .espressoOutput(
-                        recipe.getEspressoOutput()
-                )
+                .espressoOutput( recipe.getEspressoOutput() )
 
-                .extractSecond(
-                        recipe.getExtractSecond()
-                )
+                .extractSecond( recipe.getExtractSecond())
 
-                .temperature(
-                        recipe.getTemperature()
-                )
+                .temperature(recipe.getTemperature())
 
                 .ebr(recipe.getEbr())
-
+               .rating(  recipe.getRating()   )
+               .note(  recipe.getNote()   )
                 .build();
     }
     
     @Transactional(readOnly = true)
-    public List<Recipe> getRecipesByBeanId(Long beanId) {
-        return recipeRepository
-                .findByBeanIdOrderByRecordDateDesc(beanId);
+    public List<RecipeDTO> getRecipesByBeanId(Long beanId) {
+    	
+        List<Recipe> recipes = recipeRepository
+                .findByBeanIdOrderByCreatedAtDesc(beanId);
+        
+        return recipes.stream()
+                .map(this::convertToDTO)
+                .toList();
     }
 }

@@ -39,9 +39,9 @@ export default function EspressoDetail() {
 
     queryKey: ["espresso", id],
 
-    queryFn: () => getEspresso(id),
-
+    queryFn: () => getRecipe(id),
   });
+  console.log("요청 아이디:",id);
 
 
   // =========================
@@ -50,7 +50,7 @@ export default function EspressoDetail() {
 
   const deleteMutation = useMutation({
 
-    mutationFn: () => deleteEspresso(id),
+    mutationFn: () => deleteRecipe(id),
 
     onSuccess: () => {
 
@@ -140,6 +140,18 @@ export default function EspressoDetail() {
 
           <div className="detail-actions">
 
+             <button
+    type="button"
+    className="compare-button"
+    onClick={() =>
+      navigate(`/recipe/espresso/compare?beanId=${recipe.beanId}`)
+    }
+  >
+    레시피 비교
+  </button>
+
+
+
             <button
               type="button"
               className="edit-button"
@@ -149,7 +161,7 @@ export default function EspressoDetail() {
                 )
                 }
             >
-              Edit
+              수정
             </button>
 
 
@@ -161,7 +173,7 @@ export default function EspressoDetail() {
             >
               {deleteMutation.isPending
                 ? "Deleting..."
-                : "Delete"}
+                : "삭제"}
             </button>
 
           </div>
@@ -173,7 +185,7 @@ export default function EspressoDetail() {
 
         <header className="detail-header">
 
-          <p>ESPRESSO RECORD</p>
+          <p>에스프레소 일지</p>
 
           <h1>
             {recipe.bean}
@@ -187,40 +199,40 @@ export default function EspressoDetail() {
         <section className="detail-recipe">
 
           <div>
-            <span>DOSE</span>
+            <span>도징량</span>
             <strong>{recipe.dose}g</strong>
           </div>
 
           <div>
-            <span>OUTPUT</span>
+            <span>추출량</span>
             <strong>
               {recipe.espressoOutput}g
             </strong>
           </div>
 
           <div>
-            <span>TIME</span>
+            <span>추출 시간</span>
             <strong>
               {recipe.extractSecond}s
             </strong>
           </div>
 
           <div>
-            <span>TEMP</span>
+            <span>추출 온도</span>
             <strong>
               {recipe.temperature}°C
             </strong>
           </div>
 
           <div>
-            <span>GRIND</span>
+            <span>분쇄도</span>
             <strong>
               {recipe.grindingSize}
             </strong>
           </div>
 
           <div>
-            <span>RATIO</span>
+            <span>추출 비율</span>
             <strong>
               1 : {ratio}
             </strong>
@@ -239,7 +251,7 @@ export default function EspressoDetail() {
 
             <div>
 
-              <h2>Media</h2>
+              <h2>사진</h2>
 
               <p>
                 추출 과정과 결과
@@ -255,11 +267,11 @@ export default function EspressoDetail() {
             <span>+</span>
 
             <strong>
-              Add Photo / Video
+              Add Photo 
             </strong>
 
             <p>
-              사진과 영상을 추가할 수 있습니다.
+              사진을 추가할 수 있습니다.
             </p>
 
           </div>
