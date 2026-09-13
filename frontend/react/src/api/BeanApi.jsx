@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8080/api/beans";
+const API_BASE_URL = `${
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080"
+}/api/beans`;
 
 const axiosConfig = {
   withCredentials: true,
@@ -34,7 +36,7 @@ export const getBean = async (id) => {
 // Bean 등록
 export const createBean = async (data) => {
 
-  console.log("================bean 등록 데이터: ",data);
+  // console.log("================bean 등록 데이터: ",data);
   const response = await axios.post(
     API_BASE_URL,
     data,

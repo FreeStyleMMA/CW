@@ -29,7 +29,6 @@ public class RecipeController {
 	//레시피 작성 로직.
 	@PostMapping("/write")  
 	public ResponseEntity<Void> recipeWrite(@RequestBody RecipeDTO request){
-		System.out.println("=============레시피 요청 파라미터 확인 : " + "memberId:"+request.getMemberId());
 		service.writeRecipe(request);
 		return ResponseEntity.ok().build();
 	}
@@ -39,7 +38,6 @@ public class RecipeController {
 	@GetMapping("/getRecipes")
 	public ResponseEntity<List<RecipeDTO>> getRecipes(@RequestParam("memberId") String memberId ) {
 		List<RecipeDTO> recipeList = service.getAllRecipes(memberId);
-		System.out.println("memberId:"+memberId);
 		return ResponseEntity.ok(recipeList);
 	}
 	
@@ -49,7 +47,6 @@ public class RecipeController {
 	public ResponseEntity<RecipeDTO> getRecipeDetail(
 			@PathVariable("id") Long id
 	) {
-		System.out.println("-----------요청 파라미터 확인:"+ id);
 		RecipeDTO recipeDetail = service.getRecipeDetail(id);
 		return ResponseEntity.ok(recipeDetail);
 	}
@@ -61,7 +58,6 @@ public class RecipeController {
 			@PathVariable("id") Long id, 
 			@RequestBody RecipeDTO recipeDTO
 			){
-		System.out.println("==========recipedto:" +recipeDTO);
 		RecipeDTO updateRecipe = service.updateRecipe(id,recipeDTO);
 		return ResponseEntity.ok(updateRecipe);
 		
@@ -72,7 +68,6 @@ public class RecipeController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(
 			@PathVariable("id") Long id) {
-		System.out.println("==========delete id :"+ id);
 		service.delete(id);
 		return ResponseEntity.ok().build();
 		
@@ -82,12 +77,9 @@ public class RecipeController {
 	    public ResponseEntity<List<RecipeDTO>> getRecipesByBeanId(
 	            @PathVariable("beanId") Long beanId
 	    ) {
-			System.out.println("==========비교 요청 beanId :"+ beanId);
 
 		   List<RecipeDTO> recipeList = service.getRecipesByBeanId(beanId);
 		   
-		   System.out.println(
-				   "===================bean 비교 List:"+recipeList);
 	        return ResponseEntity.ok(
 	                service.getRecipesByBeanId(beanId)
 	        );

@@ -24,8 +24,6 @@ public class MemberController {
 
         memberService.signup(request);
        
-        System.out.println("로그인 요청:" + request);
-        
         return ResponseEntity.ok().build();
         
     }

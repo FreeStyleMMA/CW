@@ -1,5 +1,8 @@
 import axios from "axios";
-const API_BASE_URL = "http://localhost:8080/api/recipe";
+
+const API_BASE_URL = `${
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080"
+}/api/recipe`;
 
 const axiosConfig = {
   withCredentials: true,
@@ -30,7 +33,7 @@ export const getRecipe = async (id) => {
     `${API_BASE_URL}/${id}`,
     axiosConfig
   );
-  console.log("eso Detil 조회: " ,response.data);
+
   return response.data;
 };
 

@@ -54,8 +54,6 @@ export default function EspressoForm({
           getRoasteries(),
         ]);
 
-        console.log("Bean API 응답:", beanData);
-        console.log("Roastery API 응답:", roasteryData);
 
         setBeans(Array.isArray(beanData) ? beanData : []);
         setRoasteries(Array.isArray(roasteryData) ? roasteryData : []);

@@ -26,7 +26,6 @@ export default function RegisterPage() {
         }
       );
 
-      console.log("요청 데이터:", response.data);
     } catch (error) {
       console.log("회원가입 에러 발생");
     }

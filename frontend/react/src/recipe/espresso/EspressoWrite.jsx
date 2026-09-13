@@ -16,7 +16,6 @@ export default function EspressoWrite() {
  
   const handleCreate = async (data) => {
     try {
-      console.log("전송 memberId: "+ user.memberId)
       await createRecipe({
         ...data,
         

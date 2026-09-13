@@ -41,9 +41,7 @@ export default function EspressoDetail() {
 
     queryFn: () => getRecipe(id),
   });
-  console.log("요청 아이디:",id);
-
-
+ 
   // =========================
   // 삭제
   // =========================

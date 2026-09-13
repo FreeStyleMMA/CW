@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,15 +25,16 @@ import jakarta.servlet.http.HttpServletRequest;
 @Component
 public class JwtProvider {
 
-	//secret key 생성. 아주비밀로
-    private final String SECRET_KEY =
-            "coffeewriter-secret-key-2026-very-very-secure";
     
-    //hmac key 객체 생성
-    private final SecretKey key =
-	        Keys.hmacShaKeyFor(
-	                SECRET_KEY.getBytes(StandardCharsets.UTF_8)
-	        );
+	private final SecretKey key;
+
+    public JwtProvider(
+            @Value("${jwt.secret}") String secret
+    ) {
+        this.key = Keys.hmacShaKeyFor(
+                secret.getBytes(StandardCharsets.UTF_8)
+        );
+    }
     
     public String createToken(Long id, String memberId, String nickname, Role role ) {
     	

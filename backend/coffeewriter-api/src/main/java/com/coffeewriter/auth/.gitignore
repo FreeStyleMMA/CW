@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+
+application-local.properties
+application-prod.properties

@@ -15,7 +15,6 @@ export default function BeanComparePage() {
   const [selectedIds, setSelectedIds] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  console.log("요청 beanId",beanId);
 
   useEffect(() => {
     const fetchRecords = async () => {
