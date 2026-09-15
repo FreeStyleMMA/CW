@@ -20,9 +20,13 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/roasteries")
 @RequiredArgsConstructor
 @CrossOrigin(
-        origins = "http://localhost:5173",
-        allowCredentials = "true"
-)
+	    origins = {
+	        "http://localhost:3000",
+	        "http://localhost:5173",
+	        "http://localhost"
+	    },
+	    allowCredentials = "true"
+	)
 public class RoasteryController {
 
     private final RoasteryService service;

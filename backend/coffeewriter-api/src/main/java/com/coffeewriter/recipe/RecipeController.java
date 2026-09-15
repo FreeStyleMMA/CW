@@ -19,7 +19,14 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/recipe")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(
+	    origins = {
+	        "http://localhost:3000",
+	        "http://localhost:5173",
+	        "http://localhost"
+	    },
+	    allowCredentials = "true"
+	)
 public class RecipeController {
 
 	private final RecipeService service;

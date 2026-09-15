@@ -29,7 +29,7 @@ public class JwtProvider {
 	private final SecretKey key;
 
     public JwtProvider(
-            @Value("${jwt.secret}") String secret
+            @Value("${JWT_SECRET}") String secret
     ) {
         this.key = Keys.hmacShaKeyFor(
                 secret.getBytes(StandardCharsets.UTF_8)

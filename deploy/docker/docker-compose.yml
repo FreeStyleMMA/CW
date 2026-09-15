@@ -1,0 +1,71 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: coffeewriter-mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_DATABASE: coffeewriter
+      MYSQL_USER: coffeewriter
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    env_file:
+      - .env
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    networks:
+      - coffeewriter-network
+
+  backend:
+    build:
+      context: ../../backend/coffeewriter-api
+
+    container_name: coffeewriter-backend
+    restart: unless-stopped
+
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/coffeewriter
+      DB_USERNAME: coffeewriter
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+
+    ports:
+      - "8080:8080"
+
+    env_file:
+      - .env
+
+    depends_on:
+      - mysql
+
+    networks:
+      - coffeewriter-network
+
+  frontend:
+    build:
+      context: ../../frontend/react
+
+    container_name: coffeewriter-frontend
+    restart: unless-stopped
+
+    ports:
+      - "3000:80"
+
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+    depends_on:
+      - backend
+
+    networks:
+      - coffeewriter-network
+
+volumes:
+  mysql_data:
+
+networks:
+  coffeewriter-network:
+    driver: bridge

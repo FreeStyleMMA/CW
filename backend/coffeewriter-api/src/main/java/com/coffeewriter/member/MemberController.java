@@ -11,9 +11,15 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/members")
-@CrossOrigin(origins = "http://localhost:5173") // 추후 전역설정으로 변경
-
+@RequestMapping("/api/members")
+@CrossOrigin(
+	    origins = {
+	        "http://localhost:3000",
+	        "http://localhost:5173",
+	        "http://localhost"
+	    },
+	    allowCredentials = "true"
+	)
 public class MemberController {   
 
     private final MemberService memberService;
@@ -21,7 +27,8 @@ public class MemberController {
     @PostMapping("/register")
     public ResponseEntity<Void> signup(
             @RequestBody SignupRequestDTO request){
-
+    	 System.out.println("회원가입 Controller 진입");
+    	    System.out.println("회원 ID: " + request.getMemberId());
         memberService.signup(request);
        
         return ResponseEntity.ok().build();

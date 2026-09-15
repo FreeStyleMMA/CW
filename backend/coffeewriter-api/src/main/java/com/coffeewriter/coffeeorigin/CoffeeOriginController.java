@@ -10,6 +10,14 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/coffee-origins")
 @RequiredArgsConstructor
+@CrossOrigin(
+	    origins = {
+	        "http://localhost:3000",
+	        "http://localhost:5173",
+	        "http://localhost"
+	    },
+	    allowCredentials = "true"
+	)
 public class CoffeeOriginController {
 
     private final CoffeeOriginService service;

@@ -9,23 +9,28 @@ export default function RegisterPage() {
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+const API_BASE_URL = `${
+  import.meta.env.VITE_API_BASE_URL || ""
+}/api/members`;
 
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/members/register",
-        {
-          memberId,
-          password,
-          nickname,
-          email,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+ const handleRegister = async (e) => {
+  e.preventDefault();
 
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/register`,
+      {
+        memberId,
+        password,
+        nickname,
+        email,
+      },
+      {
+        withCredentials: false,
+      }
+    );
+    alert("회원가입 성공!");
+     navigate("/login");
     } catch (error) {
       console.log("회원가입 에러 발생");
     }

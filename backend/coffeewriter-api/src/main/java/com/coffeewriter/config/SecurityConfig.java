@@ -27,10 +27,13 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 
 	http
 	    .csrf(csrf -> csrf.disable())
+        .cors(cors -> {})
 	    .authorizeHttpRequests(auth -> auth
-	
 	        .requestMatchers(
-	            "/api/auth"
+	        		"/api/auth",
+	        	    "/api/auth/**",
+	        	    "/api/members",
+	        	    "/api/members/**"
 	        ).permitAll()
 	
 	        .requestMatchers(
@@ -44,7 +47,6 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 	        ).hasRole("ADMIN")
 	
 	        .anyRequest().permitAll()
-	            
 	        )
 
         .addFilterBefore(

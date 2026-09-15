@@ -21,7 +21,7 @@ export default function Router(){
         <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/register" element={<RegisterPage/>}/>
+            <Route path="/signup" element={<RegisterPage/>}/>
             <Route path="/recipe" element={<RecipeMainPage/>}/>
             <Route path="/recipe/espresso" element={<EspressoMain/>}/>
             <Route path="/recipe/espresso/write" element={<EspressoWrite/>}/>

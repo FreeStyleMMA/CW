@@ -26,22 +26,23 @@ public class JwtFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
 
-        // 1. Cookie에서 JWT 추출
         String token = jwtProvider.resolveToken(request);
 
-        // 2. JWT가 존재하고 유효하면
-        if (token != null && jwtProvider.validateToken(token)) {
+      
+        try {
+            if (token != null && jwtProvider.validateToken(token)) {
+                Authentication authentication =
+                        jwtProvider.getAuthentication(token);
 
-            // 3. JWT에서 Authentication 생성
-            Authentication authentication =
-                    jwtProvider.getAuthentication(token);
-
-            // 4. Spring Security에 인증 정보 등록
-            SecurityContextHolder
-                    .getContext()
-                    .setAuthentication(authentication);
+                SecurityContextHolder
+                        .getContext()
+                        .setAuthentication(authentication);
+            }
+        } catch (Exception e) {
+            SecurityContextHolder.clearContext();
         }
 
+   
         // 5. 다음 필터로 진행
         filterChain.doFilter(request, response);
     }

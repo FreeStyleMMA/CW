@@ -1,0 +1,50 @@
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+deploy/docker/.env
+
+# =========================
+# Java / Spring Boot
+# =========================
+**/build/
+**/out/
+**/.gradle/
+
+# Gradle local files
+**/gradle-app.setting
+**/gradlew.bat
+
+# =========================
+# Node / React
+# =========================
+**/node_modules/
+**/dist/
+**/.vite/
+
+# =========================
+# IDE
+# =========================
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+*.pem
