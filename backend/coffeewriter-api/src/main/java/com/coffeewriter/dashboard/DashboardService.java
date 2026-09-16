@@ -23,10 +23,12 @@ public class DashboardService {
 
         long recipeCount = recipeRepository.count();
         long beanCount = beanRepository.count();
+        Double AvgRating= recipeRepository.findAverageRating();
 
         return new DashboardOverviewResponse(
                 recipeCount,
-                beanCount
+                beanCount,
+                AvgRating
         );
     }
 
@@ -54,7 +56,8 @@ public class DashboardService {
                 recipe.getEspressoOutput(),
                 recipe.getExtractSecond(),
                 recipe.getTemperature(),
-                recipe.getEbr()
+                recipe.getEbr(),
+                recipe.getRating()
         );
     }
 }

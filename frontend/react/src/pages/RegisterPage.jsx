@@ -1,14 +1,14 @@
 import "./RegisterPage.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function RegisterPage() {
   const [memberId, setMemberId] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
-  const [email, setEmail] = useState("");
-
+  const [email, setEmail] = useState(""); 
+  const navigate = useNavigate();
 const API_BASE_URL = `${
   import.meta.env.VITE_API_BASE_URL || ""
 }/api/members`;
@@ -29,8 +29,9 @@ const API_BASE_URL = `${
         withCredentials: false,
       }
     );
-    alert("회원가입 성공!");
+    alert("회원가입 되었습니다!");
      navigate("/login");
+
     } catch (error) {
       console.log("회원가입 에러 발생");
     }

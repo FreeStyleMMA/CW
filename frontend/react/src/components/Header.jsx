@@ -32,10 +32,10 @@ export default function Header() {
         <nav className="header-nav">
           <Link to="/">Home</Link>
           <Link to="/recipe/espresso">커피 기록장</Link>
+          <Link to="/beans">원두 기록장</Link>
 
           {isAuthenticated ? (
             <>
-              <Link to="/beans">원두 기록장</Link>
 
               <div className="header-user">
                 <span className="user-name">
@@ -53,7 +53,7 @@ export default function Header() {
             </>
           ) : (
             <div className="header-auth">
-              <Link to="/login" className="login-link">
+              <Link to="/login" className="header-user">
                 로그인
               </Link>
 

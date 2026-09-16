@@ -13,11 +13,12 @@ import BeanMain from "../bean/BeanMain";
 import BeanWrite from "../bean/BeanWrite";
 import BeanDetail from "../bean/BeanDetail";
 import BeanEdit from "../bean/BeanEdit";
-
+import MainLayout from "../layouts/MainLayout"
 
 export default function Router(){
     return(
         <BrowserRouter>
+        <MainLayout>
         <Routes>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
@@ -33,6 +34,7 @@ export default function Router(){
             <Route path="/beans/:id/edit" element={<BeanEdit />}/>
             <Route  path="/recipe/espresso/compare" element={<BeanComparePage />}/>
         </Routes>
+        </MainLayout>
         </BrowserRouter>
     )
 }

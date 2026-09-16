@@ -1,6 +1,7 @@
 package com.coffeewriter.roastery;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,5 +11,6 @@ public interface RoasteryRepository
         extends JpaRepository<Roastery, Long> {
     // 검색 기능
 	List<Roastery> findByNameContainingIgnoreCase(String keyword);
+	Optional<Roastery> findByNameIgnoreCase(String name);
 
 }

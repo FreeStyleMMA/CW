@@ -19,5 +19,6 @@ public class RecentRecipeResponse {
     private int extractSecond;
     private float temperature;
     private float ebr;
+    private int rating;
 
 }

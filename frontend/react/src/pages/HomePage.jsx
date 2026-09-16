@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import MainLayout from "../layouts/MainLayout";
 import "./HomePage.css";
 
 import {
@@ -45,7 +44,6 @@ export default function HomePage() {
   }, []);
 
   return (
-    <MainLayout>
       <div className="home-page">
         {/* Hero */}
         <section className="hero">
@@ -148,7 +146,7 @@ export default function HomePage() {
 
             <div className="stat">
               <strong>
-                {Number(overview.averageRating).toFixed(1)}
+                {Number(overview.AvgRating).toFixed(1)}
               </strong>
               <span>Avg Rating</span>
             </div>
@@ -160,6 +158,5 @@ export default function HomePage() {
           </div>
         </section>
       </div>
-    </MainLayout>
   );
 }

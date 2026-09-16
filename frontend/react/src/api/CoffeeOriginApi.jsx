@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = `${
   import.meta.env.VITE_API_BASE_URL || ""
-}/api/coffee-orogins`;
+}/api/coffee-origins`;
 
 const axiosConfig = {
   withCredentials: true,

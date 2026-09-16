@@ -14,24 +14,40 @@ public class RoasteryService {
 
     private final RoasteryRepository roasteryRepository;
 
+ // ===========================
+ // Roastery 등록
 
-    // ===========================
-    // Roastery 등록
+ public RoasteryDTO createRoastery(RoasteryDTO dto) {
 
-    public RoasteryDTO createRoastery(RoasteryDTO dto) {
+     if (dto.getName() == null || dto.getName().isBlank()) {
+         throw new IllegalArgumentException(
+                 "로스터리 이름은 필수입니다."
+         );
+     }
 
-        Roastery roastery = Roastery.builder()
-                .name(dto.getName())
-                .location(dto.getLocation())
-                .discription(dto.getDiscription())
-                .build();
+     String name = dto.getName().trim();
 
-        Roastery savedRoastery =
-                roasteryRepository.save(roastery);
+     // 기존 로스터리가 있으면 새로 만들지 않고 기존 데이터 반환
+     Roastery existingRoastery =
+             roasteryRepository.findByNameIgnoreCase(name)
+                     .orElse(null);
 
-        return convertToDTO(savedRoastery);
-    }
+     if (existingRoastery != null) {
+         return convertToDTO(existingRoastery);
+     }
 
+     // 신규 로스터리 생성
+     Roastery roastery = Roastery.builder()
+             .name(name)
+             .location(dto.getLocation())
+             .discription(dto.getDiscription())
+             .build();
+
+     Roastery savedRoastery =
+             roasteryRepository.save(roastery);
+
+     return convertToDTO(savedRoastery);
+ }
 
     // ===========================
     // Roastery 전체 조회

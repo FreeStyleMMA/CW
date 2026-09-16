@@ -18,8 +18,6 @@ export default function LoginPage() {
     try {
       await login(memberId, password);
 
-      // console.log("로그인 성공");
-
       navigate("/");
     } catch (error) {
       console.log("로그인 에러 발생", error);

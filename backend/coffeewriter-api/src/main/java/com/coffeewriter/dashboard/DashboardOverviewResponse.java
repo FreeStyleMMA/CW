@@ -9,5 +9,5 @@ public class DashboardOverviewResponse {
 
     private long recipeCount;
     private long beanCount;
-
+    private Double AvgRating;
 }
