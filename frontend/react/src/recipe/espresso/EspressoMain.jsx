@@ -1,4 +1,3 @@
-import MainLayout from "../../layouts/MainLayout";
 import "./EspressoMain.css";
 
 import { useQuery } from "@tanstack/react-query";
@@ -58,7 +57,6 @@ export default function EspressoMain() {
 
 
   return (
-<MainLayout>
     <div className="espresso-page">
 
 
@@ -287,7 +285,6 @@ export default function EspressoMain() {
       </section>
 
     </div>
-        </MainLayout>
 
   );
 
