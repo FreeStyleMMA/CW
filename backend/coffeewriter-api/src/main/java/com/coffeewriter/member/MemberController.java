@@ -12,14 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/members")
-@CrossOrigin(
-	    origins = {
-	        "http://localhost:3000",
-	        "http://localhost:5173",
-	        "http://localhost"
-	    },
-	    allowCredentials = "true"
-	)
+
 public class MemberController {   
 
     private final MemberService memberService;

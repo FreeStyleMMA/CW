@@ -18,7 +18,6 @@ export default function EspressoWrite() {
     try {
       await createRecipe({
         ...data,
-        
         memberId: user.memberId,
       });
       alert("Espresso 기록이 저장되었습니다.");

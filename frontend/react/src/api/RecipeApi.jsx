@@ -6,7 +6,7 @@ const API_BASE_URL = `${
 
 
 const axiosConfig = {
-  withCredentials: true,
+  withCredentials: true
 };
 
 
@@ -17,9 +17,9 @@ export const getRecipes = async (memberId) => {
     `${API_BASE_URL}/getRecipes`,
     {
       params: {
-        memberId,
+        memberId
       },
-      ...axiosConfig,
+      ...axiosConfig
     }
   );
 

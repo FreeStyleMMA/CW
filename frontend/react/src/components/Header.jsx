@@ -31,7 +31,7 @@ export default function Header() {
 
         <nav className="header-nav">
           <Link to="/">Home</Link>
-          <Link to="/recipe/espresso">커피 기록장</Link>
+          <Link to="/recipe">커피 기록장</Link>
           <Link to="/beans">원두 기록장</Link>
 
           {isAuthenticated ? (

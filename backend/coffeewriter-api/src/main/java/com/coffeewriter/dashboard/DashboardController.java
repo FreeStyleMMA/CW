@@ -12,14 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/dashboard")
-@CrossOrigin(
-	    origins = {
-	        "http://localhost:3000",
-	        "http://localhost:5173",
-	        "http://localhost"
-	    },
-	    allowCredentials = "true"
-	)
+
 public class DashboardController {
 
     private final DashboardService dashboardService;

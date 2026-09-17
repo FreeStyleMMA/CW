@@ -1,128 +1,227 @@
+
+/* =========================
+   Recipe Main Page
+========================= */
+
 .recipe-page {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 70px 40px;
+  padding: 72px 32px 100px;
+  color: #302820;
+  box-sizing: border-box;
 }
+
+/* =========================
+   Header
+========================= */
 
 .recipe-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-
-  margin-bottom: 50px;
+  margin-bottom: 48px;
 }
 
-.section-eyebrow {
-  margin: 0 0 12px;
-
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-
-  color: #999;
+.recipe-eyebrow {
+  margin: 0 0 14px;
+  color: #9a7b5c;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
 }
 
 .recipe-header h1 {
   margin: 0;
-
-  font-size: 42px;
-  letter-spacing: -0.04em;
+  color: #302820;
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.055em;
 }
 
-.recipe-count {
-  margin: 12px 0 0;
-
-  color: #888;
-  font-size: 14px;
+.recipe-description {
+  margin: 18px 0 0;
+  color: #8b7b6c;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
-.record-button {
-  padding: 13px 20px;
+/* =========================
+   Recipe Menu
+========================= */
 
-  border-radius: 999px;
-
-  background: #222;
-  color: #fff;
-
-  text-decoration: none;
-
-  font-size: 13px;
-  font-weight: 600;
+.recipe-menu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
-.recipe-list {
-  border-top: 1px solid #e5e5e5;
-}
+/* =========================
+   Recipe Card
+========================= */
 
 .recipe-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 28px 4px;
-
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.recipe-bean {
-  margin-bottom: 14px;
-
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.recipe-data {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.recipe-value {
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-}
-
-.recipe-value span {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.recipe-value small {
-  font-size: 12px;
-  color: #888;
-}
-
-.arrow {
-  color: #aaa;
-}
-
-.recipe-time {
-  margin-left: 12px;
-
-  color: #777;
-  font-size: 14px;
-}
-
-.recipe-card-side {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: end;
-  gap: 6px;
+  justify-content: space-between;
+  min-height: 300px;
+  padding: 32px;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
 
+/* Espresso */
+
+.espresso-card {
+  background: #e6d8c8;
+  color: #352a22;
+}
+
+/* Brewing */
+
+.brewing-card {
+  background: #dce2d8;
+  color: #303b2e;
+}
+
+/* =========================
+   Card Content
+========================= */
+
+.recipe-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.recipe-card-category {
+  margin: 0 0 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+}
+
+.recipe-card h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+
+.recipe-card p:not(.recipe-card-category) {
+  margin: 16px 0 0;
   font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.75;
 }
 
-.recipe-ratio {
-  color: #888;
-  font-size: 13px;
+/* =========================
+   Card Arrow
+========================= */
+
+.recipe-card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-top: 32px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
-.recipe-loading,
-.recipe-error {
-  padding: 100px 40px;
+/* =========================
+   Hover
+========================= */
 
-  text-align: center;
-  color: #888;
+@media (hover: hover) and (pointer: fine) {
+  .recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(70, 52, 36, 0.08);
+  }
+
+  .recipe-card:hover .recipe-card-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .espresso-card:hover .recipe-card-arrow {
+    background: #352a22;
+    color: #e6d8c8;
+  }
+
+  .brewing-card:hover .recipe-card-arrow {
+    background: #303b2e;
+    color: #dce2d8;
+  }
+}
+
+.recipe-card:focus-visible {
+  outline: 3px solid #9a7b5c;
+  outline-offset: 4px;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .recipe-page {
+    padding: 48px 20px 72px;
+  }
+
+  .recipe-header {
+    margin-bottom: 32px;
+  }
+
+  .recipe-header h1 {
+    font-size: 44px;
+  }
+
+  .recipe-menu {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .recipe-card {
+    min-height: 240px;
+    padding: 26px;
+  }
+
+  .recipe-card-category {
+    margin-bottom: 18px;
+  }
+
+  .recipe-card h2 {
+    font-size: 28px;
+  }
+
+  .recipe-card-arrow {
+    width: 38px;
+    height: 38px;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .recipe-page {
+    padding: 36px 16px 56px;
+  }
+
+  .recipe-header h1 {
+    font-size: 38px;
+  }
+
+  .recipe-card {
+    padding: 24px;
+  }
 }

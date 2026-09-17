@@ -19,14 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/beans")
 @RequiredArgsConstructor
-@CrossOrigin(
-	    origins = {
-	        "http://localhost:3000",
-	        "http://localhost:5173",
-	        "http://localhost"
-	    },
-	    allowCredentials = "true"
-	)
+
 public class BeanController {
 
     private final BeanService service;
