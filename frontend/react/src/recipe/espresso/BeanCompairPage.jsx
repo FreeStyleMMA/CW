@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import MainLayout from "../../layouts/MainLayout";
 import api from "../../api/axios";
 
 import "./BeanCompairPage.css";
@@ -74,16 +73,13 @@ export default function BeanComparePage() {
 
   if (loading) {
     return (
-      <MainLayout>
         <div className="compare-page">
           기록을 불러오는 중입니다.
         </div>
-      </MainLayout>
     );
   }
 
   return (
-    <MainLayout>
       <div className="compare-page">
         <section className="compare-header">
           <p className="compare-eyebrow">
@@ -264,6 +260,5 @@ export default function BeanComparePage() {
           </section>
         )}
       </div>
-    </MainLayout>
   );
 }

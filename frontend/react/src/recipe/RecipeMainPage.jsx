@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import "./RecipeMainPage.css";
-import MainLayout from "../layouts/MainLayout";
 
 export default function RecipeMainPage() {
   return (
-    <MainLayout>
     <div className="recipe-page">
 
       <section className="recipe-header">
@@ -76,6 +74,5 @@ export default function RecipeMainPage() {
       </section>
 
     </div>
-    </MainLayout>
   );
 }
